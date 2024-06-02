@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Image Downloader</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Image Downloader</h1>
+      <form method="POST" action="{{ url_for('download_images') }}" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="file">Upload CSV File:</label>
+          <input type="file" class="form-control" id="file" name="file" accept=".csv" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Download Images</button>
+      </form>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-info mt-3">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+    </div>
+  </body>
+</html>
